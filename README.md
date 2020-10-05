@@ -1,5 +1,11 @@
 # GitHub Repository Search
 
+## "Nice to Haves" SPIKE branch
+
+Some of the features on this spike branch have not had full UX or testing, but should work well enough to give you an idea of where I would be heading next, if I were to continue.
+
+*Note: There are limitations to the pagination that I have rushed to get ready within the time limit, so it only pages forward and the buttons do not reflect the fact.*
+
 _Bootstrapped using [`create-react-app`](https://create-react-app.dev/docs/getting-started/) - with the TypeScript template_
 
 ## Getting Started
@@ -11,6 +17,9 @@ echo REACT_APP_GITHUB_ACCESS_TOKEN=XYZABC123 > .env.local
 ```
 
 ### Useful Scripts (Some come as standard with CRA)
+
+- `yarn build:prod`: Builds the Docker image
+- `yarn start:prod`: Starts the app image in a Docker container
 - `yarn storybook`: I tend to use storybook for development workflow, and also for visual regression testing 
 - `yarn start`: runs CRA usual dev tooling 
 - `yarn build`: builds deployment artefacts

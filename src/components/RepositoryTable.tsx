@@ -39,7 +39,7 @@ export const RepositoryTable: React.FC<IRepositoryTableProps> = ({
         total: repositoryCount,
         pageSize,
         onShowSizeChange,
-        pageSizeOptions: PAGINATION_PAGE_SIZES.map((size) => size.toString()),
+        pageSizeOptions: PAGINATION_PAGE_SIZES.map((size) => size.toString())
       }}
     >
       <Column

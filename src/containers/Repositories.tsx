@@ -36,7 +36,7 @@ const transformRepositoryToRespositoryItem = ({
   name,
   url,
   forks: { totalCount: forks },
-  stargazers: { totalCount: stars },
+  stargazers: { totalCount: stars }
 }: Repository) => ({
   key: id,
   name,
@@ -67,7 +67,7 @@ const Repositories = () => {
   const {
     nodes,
     pageInfo: { endCursor = null },
-    repositoryCount,
+    repositoryCount
   } = data.search;
 
   const dataSource = nodes.map(transformRepositoryToRespositoryItem);
@@ -85,7 +85,7 @@ const Repositories = () => {
     onChangePage,
     repositoryCount,
     pageSize,
-    onShowSizeChange,
+    onShowSizeChange
   };
 
   return (

@@ -44,7 +44,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "build:prod": "docker build -t github-repos:prod .",
+    "start:prod": "docker run --rm -p 80:80 -it github-repos:prod"
   },
   "eslintConfig": {
     "extends": "react-app"
