@@ -9,14 +9,14 @@ const mocks = [
     request: {
       query: GET_REPOSITORIES,
       variables: {
-        search: 'react in:name sort:forks',
-      },
+        search: 'react in:name sort:forks'
+      }
     },
     result: {
       data: {
         search: {
           pageInfo: {
-            endCursor: 'XYZ',
+            endCursor: 'XYZ'
           },
           nodes: [
             {
@@ -25,14 +25,14 @@ const mocks = [
               name: 'A React Repo',
               url: 'url',
               forks: { __typename: 'RepositoryConnection', totalCount: 12 },
-              stargazers: { __typename: 'StargazerConnection', totalCount: 13 },
-            },
+              stargazers: { __typename: 'StargazerConnection', totalCount: 13 }
+            }
           ],
-          repositoryCount: 1,
-        },
-      },
-    },
-  },
+          repositoryCount: 1
+        }
+      }
+    }
+  }
 ];
 
 const errorMocks = [
@@ -40,11 +40,11 @@ const errorMocks = [
     request: {
       query: GET_REPOSITORIES,
       variables: {
-        search: 'react in:name sort:forks',
-      },
+        search: 'react in:name sort:forks'
+      }
     },
     result: {
-      errors: [new Error('Error!')],
+      errors: [new Error('Error!')]
     }
   }
 ];
