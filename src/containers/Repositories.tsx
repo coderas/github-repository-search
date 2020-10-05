@@ -48,7 +48,7 @@ const transformRepositoryToRespositoryItem = ({
 const buildSearchQuery = (searchTerm: string) =>
   `${searchTerm} in:name sort:forks`;
 
-const Repositories = () => {
+const Repositories: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState(INITIAL_SEARCH_TERM);
   const [pageSize, setPageSize] = useState<number>(INITIAL_PAGE_SIZE);
   const [page, setPage] = useState<string | null>(null);
@@ -61,6 +61,7 @@ const Repositories = () => {
   );
 
   if (loading) return <p>Loading...</p>;
+
   if (error || !data || !data.search)
     return <p>Error: {JSON.stringify(error)}</p>;
 
@@ -72,7 +73,7 @@ const Repositories = () => {
 
   const dataSource = nodes.map(transformRepositoryToRespositoryItem);
 
-  // todo : limitation, only paginates forward
+  // todo : SPIKE limitation, only paginates forward does not update buttons yet
   const onChangePage = () => setPage(endCursor);
 
   const onShowSizeChange = (_: number, size: number) => {

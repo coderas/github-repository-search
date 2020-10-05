@@ -12,7 +12,12 @@ type Repository = {
   stars: number;
 };
 
-const RepositoryLink = (name: string, record: Repository) => (
+interface RepositoryLinkProps {
+  name: string;
+  record: Repository;
+};
+
+const RepositoryLink: React.FC<RepositoryLinkProps> = (name, record) => (
   <a href={record.url}>{name}</a>
 );
 
