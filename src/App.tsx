@@ -32,7 +32,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-const App = () => (
+const App: React.FC = () => (
   <React.StrictMode>
     <ApolloProvider client={client}>
       <Repositories />

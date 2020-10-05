@@ -9,7 +9,9 @@ const mocks = [
     request: {
       query: GET_REPOSITORIES,
       variables: {
-        search: 'react in:name sort:forks'
+        search: 'react in:name sort:forks',
+        page: null,
+        pageSize: 8
       }
     },
     result: {
@@ -40,7 +42,9 @@ const errorMocks = [
     request: {
       query: GET_REPOSITORIES,
       variables: {
-        search: 'react in:name sort:forks'
+        search: 'react in:name sort:forks',
+        page: null,
+        pageSize: 8
       }
     },
     result: {
@@ -55,6 +59,7 @@ it('renders a loading message', async () => {
       <Repositories />
     </MockedProvider>
   );
+
   expect(await getByText(/Loading/i)).toBeInTheDocument();
 
   await wait();
@@ -66,6 +71,7 @@ it('handles errors', async () => {
       <Repositories />
     </MockedProvider>
   );
+
   await wait();
 
   expect(await getByText(/Error:/i)).toBeInTheDocument();
