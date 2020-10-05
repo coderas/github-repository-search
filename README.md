@@ -11,8 +11,8 @@ echo REACT_APP_GITHUB_ACCESS_TOKEN=XYZABC123 > .env.local
 ```
 
 ### Useful Scripts (Some come as standard with CRA)
-- yarn storybook: I tend to use storybook for development workflow, and also for visual regression testing 
-- yarn start: runs CRA usual dev tooling 
-- yarn build: builds deployment artefacts
-- yarn test: runs jest test and, with that, storyshots
-- yarn lint: runs tslint 
+- `yarn storybook`: I tend to use storybook for development workflow, and also for visual regression testing 
+- `yarn start`: runs CRA usual dev tooling 
+- `yarn build`: builds deployment artefacts
+- `yarn test`: runs jest test and, with that, storyshots
+- `yarn lint`: runs tslint 
