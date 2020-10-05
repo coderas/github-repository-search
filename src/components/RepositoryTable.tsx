@@ -17,6 +17,7 @@ const RepositoryLink = (name: string, record: Repository) => (
 
 export interface IRepositoryTableProps {
   dataSource: Repository[] | undefined;
+  repositoryCount: number
 }
 
 export const RepositoryTable: React.FC<IRepositoryTableProps> = ({
