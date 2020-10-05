@@ -1,8 +1,6 @@
 # GitHub Repository Search
 
-## "Nice to Haves" SPIKE branch
-
-Some of the features on this spike branch have not had full UX or testing, but should work well enough to give you an idea of where I would be heading next, if I were to continue.
+Some of the features in this repo have not had UX or testing, but should work well enough to give you an idea of where I would be heading next, if I were to continue.
 
 *Note: There are limitations to the pagination that I have rushed to get ready within the time limit, so it only pages forward and the buttons do not reflect the fact.*
 

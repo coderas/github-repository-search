@@ -73,7 +73,7 @@ const Repositories: React.FC = () => {
 
   const dataSource = nodes.map(transformRepositoryToRespositoryItem);
 
-  // todo : SPIKE limitation, only paginates forward does not update buttons yet
+  // todo : limitation, only paginates forward does not update buttons yet
   const onChangePage = () => setPage(endCursor);
 
   const onShowSizeChange = (_: number, size: number) => {
