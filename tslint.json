@@ -1,0 +1,34 @@
+{
+    "extends": "tslint:recommended",
+    "defaultSeverity": "error",
+    "rules": {
+        "trailing-comma": [
+            true,
+            {
+                "multiline": {
+                    "objects": "never",
+                    "arrays": "never",
+                    "functions": "never",
+                    "typeLiterals": "never"
+                },
+                "esSpecCompliant": true
+            }
+        ],
+        "quotemark": [
+            true,
+            "single",
+            "jsx-double"
+        ],
+        "no-consecutive-blank-lines": true,
+        "max-line-length": {
+            "options": [
+                120
+            ]
+        }
+    },
+    "linterOptions": {
+        "exclude": [
+            "**/node_modules/**"
+        ]
+    }
+}
