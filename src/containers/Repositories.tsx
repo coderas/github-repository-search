@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { Input } from 'antd';
 import { RepositoryTable, IRepositoryTableProps } from '../components';
-import { INITIAL_SEARCH_TERM } from '../constants';
+import { INITIAL_SEARCH_TERM, INITIAL_PAGE_SIZE } from '../constants';
 import { GET_REPOSITORIES } from './Repositories.query';
 
 const { Search } = Input;
@@ -27,6 +27,8 @@ interface SearchResult {
 
 interface SearchQueryVariables {
   search: string;
+  page: string | null;
+  pageSize: number;
 }
 
 const transformRepositoryToRespositoryItem = ({
@@ -34,7 +36,7 @@ const transformRepositoryToRespositoryItem = ({
   name,
   url,
   forks: { totalCount: forks },
-  stargazers: { totalCount: stars }
+  stargazers: { totalCount: stars },
 }: Repository) => ({
   key: id,
   name,
@@ -48,29 +50,42 @@ const buildSearchQuery = (searchTerm: string) =>
 
 const Repositories = () => {
   const [searchTerm, setSearchTerm] = useState(INITIAL_SEARCH_TERM);
+  const [pageSize, setPageSize] = useState<number>(INITIAL_PAGE_SIZE);
+  const [page, setPage] = useState<string | null>(null);
 
   const onSearch = (value: string) => setSearchTerm(value);
 
   const { loading, data, error } = useQuery<SearchResult, SearchQueryVariables>(
     GET_REPOSITORIES,
-    { variables: { search: buildSearchQuery(searchTerm) } }
+    { variables: { search: buildSearchQuery(searchTerm), page, pageSize } }
   );
 
   if (loading) return <p>Loading...</p>;
-
   if (error || !data || !data.search)
     return <p>Error: {JSON.stringify(error)}</p>;
 
   const {
     nodes,
-    repositoryCount
+    pageInfo: { endCursor = null },
+    repositoryCount,
   } = data.search;
 
   const dataSource = nodes.map(transformRepositoryToRespositoryItem);
 
+  // todo : limitation, only paginates forward
+  const onChangePage = () => setPage(endCursor);
+
+  const onShowSizeChange = (_: number, size: number) => {
+    setPage(null);
+    setPageSize(size);
+  };
+
   const tableProps: IRepositoryTableProps = {
     dataSource,
-    repositoryCount
+    onChangePage,
+    repositoryCount,
+    pageSize,
+    onShowSizeChange,
   };
 
   return (

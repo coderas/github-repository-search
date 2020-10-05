@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table } from 'antd';
+import { PAGINATION_PAGE_SIZES } from '../constants'
 
 const { Column } = Table;
 
@@ -17,15 +18,29 @@ const RepositoryLink = (name: string, record: Repository) => (
 
 export interface IRepositoryTableProps {
   dataSource: Repository[] | undefined;
-  repositoryCount: number
+  onChangePage: () => void;
+  repositoryCount: number;
+  pageSize: number;
+  onShowSizeChange: (current: number, newSize: number) => void;
 }
 
 export const RepositoryTable: React.FC<IRepositoryTableProps> = ({
-  dataSource
+  dataSource,
+  onChangePage,
+  repositoryCount,
+  pageSize,
+  onShowSizeChange
 }) => (
     <Table
       dataSource={dataSource}
-      pagination={false}
+      onChange={onChangePage}
+      pagination={{
+        position: ['bottomCenter'],
+        total: repositoryCount,
+        pageSize,
+        onShowSizeChange,
+        pageSizeOptions: PAGINATION_PAGE_SIZES.map((size) => size.toString()),
+      }}
     >
       <Column
         title="Name"
