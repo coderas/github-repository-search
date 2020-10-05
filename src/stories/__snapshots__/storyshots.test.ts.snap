@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots RepositoryTable Primary 1`] = `
+<div
+  className="ant-table-wrapper"
+>
+  <div
+    className="ant-spin-nested-loading"
+  >
+    <div
+      className="ant-spin-container"
+    >
+      <div
+        className="ant-table"
+      >
+        <div
+          className="ant-table-container"
+        >
+          <div
+            className="ant-table-content"
+            onScroll={[Function]}
+            style={Object {}}
+          >
+            <table
+              style={
+                Object {
+                  "tableLayout": "auto",
+                }
+              }
+            >
+              <colgroup />
+              <thead
+                className="ant-table-thead"
+              >
+                <tr>
+                  <th
+                    className="ant-table-cell"
+                    colSpan={null}
+                    rowSpan={null}
+                    style={Object {}}
+                  >
+                    Name
+                  </th>
+                  <th
+                    className="ant-table-cell"
+                    colSpan={null}
+                    rowSpan={null}
+                    style={Object {}}
+                  >
+                    🌟 Stars
+                  </th>
+                  <th
+                    className="ant-table-cell"
+                    colSpan={null}
+                    rowSpan={null}
+                    style={Object {}}
+                  >
+                    🍴 Forks
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                className="ant-table-tbody"
+              >
+                <tr
+                  className="ant-table-row ant-table-row-level-0"
+                  data-row-key="ABC890"
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <td
+                    className="ant-table-cell"
+                    colSpan={null}
+                    rowSpan={null}
+                    style={Object {}}
+                  >
+                    <a
+                      href="http://localhost:3000"
+                    >
+                      Repo Name 1
+                    </a>
+                  </td>
+                  <td
+                    className="ant-table-cell"
+                    colSpan={null}
+                    rowSpan={null}
+                    style={Object {}}
+                  >
+                    2424
+                  </td>
+                  <td
+                    className="ant-table-cell"
+                    colSpan={null}
+                    rowSpan={null}
+                    style={Object {}}
+                  >
+                    1313
+                  </td>
+                </tr>
+                <tr
+                  className="ant-table-row ant-table-row-level-0"
+                  data-row-key="XYZ123"
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <td
+                    className="ant-table-cell"
+                    colSpan={null}
+                    rowSpan={null}
+                    style={Object {}}
+                  >
+                    <a
+                      href="http://localhost:3000"
+                    >
+                      Repo Name 2
+                    </a>
+                  </td>
+                  <td
+                    className="ant-table-cell"
+                    colSpan={null}
+                    rowSpan={null}
+                    style={Object {}}
+                  >
+                    777
+                  </td>
+                  <td
+                    className="ant-table-cell"
+                    colSpan={null}
+                    rowSpan={null}
+                    style={Object {}}
+                  >
+                    999
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
