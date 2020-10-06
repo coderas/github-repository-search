@@ -1,0 +1,7 @@
+export const INITIAL_SEARCH_TERM = 'react';
+export const INITIAL_PAGE_SIZE = 8;
+export const PAGINATION_PAGE_SIZES = [
+  INITIAL_PAGE_SIZE,
+  INITIAL_PAGE_SIZE * 2,
+  INITIAL_PAGE_SIZE * 4
+];

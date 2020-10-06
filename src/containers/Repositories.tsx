@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { RepositoryTable } from '../components';
+import { Input } from 'antd';
+import { RepositoryTable, IRepositoryTableProps } from '../components';
+import { INITIAL_SEARCH_TERM, INITIAL_PAGE_SIZE } from '../constants';
 import { GET_REPOSITORIES } from './Repositories.query';
+
+const { Search } = Input;
 
 interface Repository {
   id: string;
@@ -13,15 +17,21 @@ interface Repository {
 
 interface SearchResult {
   search: {
+    pageInfo: {
+      endCursor: string;
+    };
     nodes: Repository[];
+    repositoryCount: number;
   };
 }
 
 interface SearchQueryVariables {
   search: string;
+  page: string | null;
+  pageSize: number;
 }
 
-const transformRepositoryToRespositoryTableItem = ({
+const transformRepositoryToRespositoryItem = ({
   id,
   name,
   url,
@@ -38,10 +48,16 @@ const transformRepositoryToRespositoryTableItem = ({
 const buildSearchQuery = (searchTerm: string) =>
   `${searchTerm} in:name sort:forks`;
 
-export const Repositories = () => {
+const Repositories: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState(INITIAL_SEARCH_TERM);
+  const [pageSize, setPageSize] = useState<number>(INITIAL_PAGE_SIZE);
+  const [page, setPage] = useState<string | null>(null);
+
+  const onSearch = (value: string) => setSearchTerm(value);
+
   const { loading, data, error } = useQuery<SearchResult, SearchQueryVariables>(
     GET_REPOSITORIES,
-    { variables: { search: buildSearchQuery('react') } }
+    { variables: { search: buildSearchQuery(searchTerm), page, pageSize } }
   );
 
   if (loading) return <p>Loading...</p>;
@@ -49,11 +65,36 @@ export const Repositories = () => {
   if (error || !data || !data.search)
     return <p>Error: {JSON.stringify(error)}</p>;
 
-  const { nodes } = data.search;
+  const {
+    nodes,
+    pageInfo: { endCursor = null },
+    repositoryCount
+  } = data.search;
 
-  const dataSource = nodes.map(transformRepositoryToRespositoryTableItem);
+  const dataSource = nodes.map(transformRepositoryToRespositoryItem);
+
+  // todo : limitation, only paginates forward does not update buttons yet
+  const onChangePage = () => setPage(endCursor);
+
+  const onShowSizeChange = (_: number, size: number) => {
+    setPage(null);
+    setPageSize(size);
+  };
+
+  const tableProps: IRepositoryTableProps = {
+    dataSource,
+    onChangePage,
+    repositoryCount,
+    pageSize,
+    onShowSizeChange
+  };
 
   return (
-    <RepositoryTable dataSource={dataSource} />
+    <>
+      <Search placeholder={searchTerm} onSearch={onSearch} />
+      <RepositoryTable {...tableProps} />
+    </>
   );
 };
+
+export { Repositories, GET_REPOSITORIES };
